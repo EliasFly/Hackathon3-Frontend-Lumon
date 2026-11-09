@@ -1,0 +1,1 @@
+# Pegar aquí el token retornado por POST /integrations/deploy/challenge (texto plano exacto sin espacios)

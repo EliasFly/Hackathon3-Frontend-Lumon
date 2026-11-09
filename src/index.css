@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --lumon-blue: #091a28;
+    --lumon-teal: #00d2c4;
+    --lumon-amber: #e5a93c;
+    --lumon-red: #e05353;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* CRT monitor subtle effect for MDR console */
+.crt-grid {
+  background-size: 100% 2px;
+  background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+}
