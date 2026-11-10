@@ -11,6 +11,15 @@ import { RefinersPage } from './pages/RefinersPage';
 import { IncidentsPage } from './pages/IncidentsPage';
 import { WellnessPage } from './pages/WellnessPage';
 
+// Auto-redirect from Vercel preview subdomains to verified production domain
+if (
+  typeof window !== 'undefined' &&
+  window.location.hostname.endsWith('.vercel.app') &&
+  window.location.hostname !== 'hackathon3-frontend-lumon.vercel.app'
+) {
+  window.location.replace(`https://hackathon3-frontend-lumon.vercel.app${window.location.pathname}`);
+}
+
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
 
