@@ -1,9 +1,16 @@
 {
-  "teamCode": "",
-  "teamName": "Lumon-MDR-Team",
+  "teamCode": "TEAM-067",
+  "teamName": "Cuadrilla MDR Elias-Jasyr",
+  "deployUrl": "https://",
+  "storageProvider": "CLOUDINARY",
+  "integrantes": [
+    { "nombre": "Elías Paz", "codigo": "202510360" },
+    { "nombre": "Jasyr Valdez", "codigo": "202510474" },
+    { "nombre": "Jasyr Valdez", "codigo": "202510474-2" }
+  ],
   "members": [
+    { "name": "Elías Paz", "code": "202510360" },
     { "name": "Jasyr Valdez", "code": "202510474" },
-    { "name": "Kamilo Neyra", "code": "202310250" },
-    { "name": "Elías Paz", "code": "202510360" }
+    { "name": "Jasyr Valdez", "code": "202510474-2" }
   ]
 }

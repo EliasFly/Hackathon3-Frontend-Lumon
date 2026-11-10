@@ -82,9 +82,9 @@ async function main() {
     case 'roster': {
       console.log(`\x1b[36mInscribiendo 3 integrantes...\x1b[0m`);
       const members = [
-        { name: 'Jasyr Valdez', code: '202510474' },
-        { name: 'Kamilo Neyra', code: '202310250' },
         { name: 'Elías Paz', code: '202510360' },
+        { name: 'Jasyr Valdez', code: '202510474' },
+        { name: 'Jasyr Valdez', code: '202510474-2' },
       ];
       const res = await request('/team/roster', {
         method: 'PUT',
