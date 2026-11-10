@@ -29,6 +29,27 @@ function loadTokens() {
   return null;
 }
 
+async function loginSupervisor() {
+  const url = `${API_BASE}/auth/login`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Lumon-Build': 'dev',
+    },
+    body: JSON.stringify({
+      email: 'jasyr.valdez@utec.edu.pe',
+      password: 'Lumon2026!MDR',
+    }),
+  });
+  if (!res.ok) {
+    throw new Error(`Login failed with status ${res.status}`);
+  }
+  const data = await res.json();
+  saveTokens(data);
+  return data;
+}
+
 async function request(endpoint, options = {}) {
   const url = `${API_BASE}${endpoint.startsWith('/') ? '' : '/'}${endpoint}`;
   const headers = {
@@ -37,18 +58,35 @@ async function request(endpoint, options = {}) {
     ...(options.headers || {}),
   };
 
-  const tokens = loadTokens();
+  let tokens = loadTokens();
+  if (!tokens?.accessToken && !options.skipAuth) {
+    tokens = await loginSupervisor();
+  }
+
   if (tokens?.accessToken && !options.skipAuth) {
     headers['Authorization'] = `Bearer ${tokens.accessToken}`;
   }
 
-  const res = await fetch(url, { ...options, headers });
-  const text = await res.text();
+  let res = await fetch(url, { ...options, headers });
+  let text = await res.text();
   let json;
   try {
     json = JSON.parse(text);
   } catch {
     json = { raw: text };
+  }
+
+  if (res.status === 401 && json?.error === 'TOKEN_EXPIRED' && !options.skipAuth) {
+    console.log('Token vencido. Re-autenticando supervisor...');
+    tokens = await loginSupervisor();
+    headers['Authorization'] = `Bearer ${tokens.accessToken}`;
+    res = await fetch(url, { ...options, headers });
+    text = await res.text();
+    try {
+      json = JSON.parse(text);
+    } catch {
+      json = { raw: text };
+    }
   }
 
   if (!res.ok) {

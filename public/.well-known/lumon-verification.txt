@@ -1,1 +1,1 @@
-# Pegar aquí el token retornado por POST /integrations/deploy/challenge (texto plano exacto sin espacios)
+lumon-verify-TEAM-067-m7bpcwec1g6d97mafrf2

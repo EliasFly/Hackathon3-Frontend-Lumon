@@ -1,7 +1,7 @@
 {
   "teamCode": "TEAM-067",
   "teamName": "Cuadrilla MDR Elias-Jasyr",
-  "deployUrl": "https://",
+  "deployUrl": "https://hackathon3-frontend-lumon.vercel.app",
   "storageProvider": "CLOUDINARY",
   "integrantes": [
     { "nombre": "Elías Paz", "codigo": "202510360" },

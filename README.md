@@ -15,7 +15,7 @@
 - **Integrantes:**
   - Elías Paz — Código: `202510360`
   - Jasyr Valdez — Código: `202510474`
-- **Deploy:** URL de producción (Vercel / Netlify)
+- **Deploy:** https://hackathon3-frontend-lumon.vercel.app
 - **Storage:** Cloudinary / Supabase
 
 ---
