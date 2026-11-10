@@ -26,7 +26,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const refreshMe = useCallback(async (): Promise<Me | null> => {
     try {
       const me = await authService.getMe();
-      setUser(me.user);
+      setUser({
+        id: me.id,
+        email: me.email,
+        displayName: me.displayName,
+      });
       setTeam(me.team);
       setRole(me.role);
       return me;

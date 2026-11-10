@@ -14,8 +14,6 @@ export interface User {
   id: number;
   email: string;
   displayName: string;
-  roleId: number;
-  roleName: string;
 }
 
 export interface Team {
@@ -50,16 +48,21 @@ export type Permission =
   | 'team:manage';
 
 export interface Role {
-  id: number;
   code: string;
   name: string;
-  permissions: Permission[];
+  permissions?: Permission[];
 }
 
 export interface Me {
-  user: User;
+  id: number;
+  email: string;
+  displayName: string;
   team: Team;
-  role: Role;
+  role: {
+    code: string;
+    name: string;
+  };
+  permissions: Permission[];
   clearance: {
     granted: boolean;
     grantedAt: string | null;
