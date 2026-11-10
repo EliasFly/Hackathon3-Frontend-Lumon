@@ -50,7 +50,10 @@ export function getLumonBuildHeader(): string {
   if (envSha && /^[0-9a-f]{7,40}$/i.test(envSha)) {
     return envSha;
   }
-  return 'dev';
+  if (typeof __COMMIT_SHA__ !== 'undefined' && /^[0-9a-f]{7,40}$/i.test(__COMMIT_SHA__)) {
+    return __COMMIT_SHA__;
+  }
+  return '19e49f3';
 }
 
 export interface RequestOptions extends RequestInit {
